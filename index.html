@@ -1,6 +1,9 @@
 <title>Javascript Test</title>
-<body>
+<body style="padding:0px;margin:0px;">
   <div style="position:relative;width:100vw;height:100vh;" id="mainDiv">
+    <button onclick="loadGame();">
+      
+    </button>
     <p id="output" style="color:#111;">
       0 clicks
     </p>
@@ -10,11 +13,11 @@
     <p id="pc">
       1 point per click
     </p>
-    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
+    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];setVar('clicks',clicks);autoClicks = autoClicks + Number('1' + zero.repeat(amount));setVar('autoClicks',autoClicks);CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);setVar('cps'+amount,CPSPrice[amount]);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
       +1 CPS<br>$19
     </button>
     <br>
-    <button id="btn" onclick="clicks = clicks + ppc;cps = cps + ppc;" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
+    <button id="btn" onclick="clicks = clicks + ppc;setVar('clicks',clicks);cps = cps + ppc;setVar('cps',cps);" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
       Click me
     </button>
     <span id="cpsCount">1</span>
@@ -27,7 +30,7 @@
     </button>
     <br><br>
 
-<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
+<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];setVar('clicks',clicks);ppc = ppc + Number('1' + zero.repeat(amountP));setVar('ppc',ppc);PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);setVar('')event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
       +1 PPC<br>$19
     </button>
     <br>
@@ -44,6 +47,7 @@
   function elem(input){
     return document.querySelector('#'+input);
   }
+    function getVar(key){return Number(localStorage.getItem(key));}
   var zero = String('0');
   var ppc = 1;
   var amount = 0;
@@ -56,7 +60,19 @@
   var noun;
   var nounP;
   var cs = elem('cs');
-  var pc = elem('pc')
+  var pc = elem('pc');
+    function loadGame(){
+      ppc = getVar('ppc');
+      clicks = getVar('clicks');
+      cps = getVar('cps');
+      CPSPrice = [getVar('cps0'),getVar('cps1'),getVar('cps2'),getVar('cps3'),getVar('cps4'),getVar('cps5'),getVar('cps6')];
+      PPCPrice = [getVar('ppc0'),getVar('ppc1'),getVar('ppc2'),getVar('ppc3'),getVar('ppc4'),getVar('ppc5'),getVar('ppc6')];
+      autoClicks = getVar('autoClicks');
+      elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];
+    }
+    function setVar(){
+      return localStorage.setItem
+    }
   setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = clicks + ' clicks'}},1);
   setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = (cps + autoClicks) + ' ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
   setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = (ppc) + ' ' + nounP + ' per click';},1);
