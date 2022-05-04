@@ -30,7 +30,7 @@
     </button>
     <br><br>
 
-<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];setVar('clicks',clicks);ppc = ppc + Number('1' + zero.repeat(amountP));setVar('ppc',ppc);PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);setVar('')event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
+<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];setVar('clicks',clicks);ppc = ppc + Number('1' + zero.repeat(amountP));setVar('ppc',ppc);PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);setVar('ppc'+amount,PPCPrice);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
       +1 PPC<br>$19
     </button>
     <br>
