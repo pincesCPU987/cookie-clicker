@@ -1,0 +1,66 @@
+<title>Javascript Test</title>
+<body>
+  <div style="position:relative;width:100vw;height:100vh;" id="mainDiv">
+    <p id="output" style="color:#111;">
+      0 clicks
+    </p>
+    <p id="cs">
+      0 clicks per second
+    </p>
+    <p id="pc">
+      1 point per click
+    </p>
+    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
+      +1 CPS<br>$19
+    </button>
+    <br>
+    <button id="btn" onclick="clicks = clicks + ppc;cps = cps + ppc;" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
+      Click me
+    </button>
+    <span id="cpsCount">1</span>
+    <br>
+    <button id="cpsDown" onclick="if(amount > 0){amount = amount - 1}elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];elem('cpsCount').innerHTML = '1' + zero.repeat(amount);">
+      -
+    </button>
+    <button id="cpsUp" onclick="if(amount < 6){amount = amount + 1}elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];elem('cpsCount').innerHTML = '1' + zero.repeat(amount);">
+      +
+    </button>
+    <br><br>
+
+<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
+      +1 PPC<br>$19
+    </button>
+    <br>
+    <span id="ppcCount">1</span>
+    <br>
+    <button id="ppcDown" onclick="if(amountP > 0){amountP = amountP - 1}elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];elem('ppcCount').innerHTML = '1' + zero.repeat(amountP);">
+      -
+    </button>
+    <button id="ppcUp" onclick="if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];elem('ppcCount').innerHTML = '1' + zero.repeat(amountP);">
+      +
+    </button>
+  </div>
+  <script>
+  function elem(input){
+    return document.querySelector('#'+input);
+  }
+  var zero = String('0');
+  var ppc = 1;
+  var amount = 0;
+  var amountP = 0;
+  var clicks = 0;
+  var cps = 0;
+  var CPSPrice = [19,99,999,9999,99999,999999,9999999];
+  var PPCPrice = [19,99,999,9999,99999,999999,9999999];
+  var autoClicks = 0;
+  var noun;
+  var nounP;
+  var cs = elem('cs');
+  var pc = elem('pc')
+  setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = clicks + ' clicks'}},1);
+  setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = (cps + autoClicks) + ' ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
+  setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = (ppc) + ' ' + nounP + ' per click';},1);
+</script>
+  </body>
+<noscript><style>#mainDiv{display:none;}</style>Please use a browser that supports JavaScript.</noscript>
+<style>button{color:#111;cursor:pointer;}</style>
