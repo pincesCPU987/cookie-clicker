@@ -50,13 +50,64 @@
     function getVar(key){return Number(localStorage.getItem(key));}
   var zero = String('0');
   var ppc = 1;
+    if(!getVar('ppc')){
+      setVar('ppc','1');
+    }
   var amount = 0;
   var amountP = 0;
   var clicks = 0;
+    if(!getVar('clicks')){
+      setVar('clicks','0');
+    }
   var cps = 0;
   var CPSPrice = [19,99,999,9999,99999,999999,9999999];
+    if(!getVar('cps0')){
+      setVar('cps0','19');
+    }
+    if(!getVar('cps1')){
+      setVar('cps1','99');
+    }
+    if(!getVar('cps2')){
+      setVar('cps2','999');
+    }
+    if(!getVar('cps3')){
+      setVar('cps3','9999');
+    }
+    if(!getVar('cps4')){
+      setVar('cps4','99999');
+    }
+    if(!getVar('cps5')){
+      setVar('cps5','999999');
+    }
+    if(!getVar('cps6')){
+      setVar('cps6','9999999');
+    }
   var PPCPrice = [19,99,999,9999,99999,999999,9999999];
+    if(!getVar('ppc0')){
+      setVar('ppc0','19');
+    }
+    if(!getVar('ppc1')){
+      setVar('ppc1','99');
+    }
+    if(!getVar('ppc2')){
+      setVar('ppc2','999');
+    }
+    if(!getVar('ppc3')){
+      setVar('ppc3','9999');
+    }
+    if(!getVar('ppc4')){
+      setVar('ppc4','99999');
+    }
+    if(!getVar('ppc5')){
+      setVar('ppc5','999999');
+    }
+    if(!getVar('ppc6')){
+      setVar('ppc6','9999999');
+    }
   var autoClicks = 0;
+    if(!getVar('autoClicks')){
+      setVar('autoClicks','0')
+    }
   var noun;
   var nounP;
   var cs = elem('cs');
