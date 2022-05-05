@@ -19,7 +19,7 @@
     <p id="pc">
       <span style="font-family:monospace;">1</span> point per click
     </p>
-    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
+    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style=\'font-family:monospace;\'>' + CPSPrice[amount] + '</span>';}">
       <span style="font-family:monospace;">+1</span> CPS<br>$19
     </button>
     <br>
@@ -28,24 +28,24 @@
     </button>
     <span id="cpsCount">1</span>
     <br>
-    <button id="cpsDown" onclick="if(amount > 0){amount = amount - 1}elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];elem('cpsCount').innerHTML = '1' + zero.repeat(amount);">
+    <button id="cpsDown" onclick="if(amount > 0){amount = amount - 1}elem('CPS').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amount) + '</span> CPS<br>$<span style=\'font-family:monospace;\'>' + CPSPrice[amount] + '</span>';elem('cpsCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amount) + '</span>';">
       -
     </button>
-    <button id="cpsUp" onclick="if(amount < 6){amount = amount + 1}elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];elem('cpsCount').innerHTML = '1' + zero.repeat(amount);">
+    <button id="cpsUp" onclick="if(amount < 6){amount = amount + 1}elem('CPS').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amount) + '</span> CPS<br>$<span style=\'font-family:monospace;\'>' + CPSPrice[amount] + '</span>';elem('cpsCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amount) + '</span>';">
       +
     </button>
     <br><br>
 
-<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
+<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style=\'font-family:monospace;\'>' + PPCPrice[amountP] + '</span>';}">
       <span style="font-family:monospace;">+1</span> PPC<br>$19
     </button>
     <br>
     <span id="ppcCount">1</span>
     <br>
-    <button id="ppcDown" onclick="if(amountP > 0){amountP = amountP - 1}elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];elem('ppcCount').innerHTML = '1' + zero.repeat(amountP);">
+    <button id="ppcDown" onclick="if(amountP > 0){amountP = amountP - 1}elem('PPC').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style=\'font-family:monospace;\'>' + PPCPrice[amountP] + '</span>';elem('ppcCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amountP) + '</span>';">
       -
     </button>
-    <button id="ppcUp" onclick="if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];elem('ppcCount').innerHTML = '1' + zero.repeat(amountP);">
+    <button id="ppcUp" onclick="if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style=\'font-family:monospace;\'>' + PPCPrice[amountP] + '</span>';elem('ppcCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amountP) + '</span>';">
       +
     </button>
   </div>
