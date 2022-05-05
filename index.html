@@ -96,7 +96,7 @@
         clicks = clicks - CPSPrice[amount];
         autoClicks = autoClicks + Number('1' + zero.repeat(amount));
         CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);
-        e.target.innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
+        elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
       }
     }
     function cpsLess(){
@@ -118,7 +118,7 @@
         clicks = clicks - PPCPrice[amountP];
         ppc = ppc + Number('1' + zero.repeat(amountP));
         PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);
-        e.target.innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+        elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
       }
     }
     function ppcLess(){
