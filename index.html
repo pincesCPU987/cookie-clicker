@@ -82,7 +82,7 @@
       fr.readAsText(elem('file').files[0]);
     }
     function saveGame(){
-      var newObj = {ppc:ppc,clicks:clicks,cps:cps,cps0:CPSPrice[0],cps1:CPSPrice[1],cps2:CPSPrice[2],cps3:CPSPrice[3],cps4:CPSPrice[4],cps5:CPSPrice[5],cps6:CPSPrice[6],ppc0:PPCPrice[0],ppc1:PPCPrice[1],ppc2:PPCPrice[2],ppc3:PPCPrice[3],ppc4:PPCPrice[4],ppc5:PPCPrice[5],cps6:CPSPrice[6],autoClicks:autoClicks}
+      var newObj = {ppc:ppc,clicks:clicks,cps:cps,cps0:CPSPrice[0],cps1:CPSPrice[1],cps2:CPSPrice[2],cps3:CPSPrice[3],cps4:CPSPrice[4],cps5:CPSPrice[5],cps6:CPSPrice[6],ppc0:PPCPrice[0],ppc1:PPCPrice[1],ppc2:PPCPrice[2],ppc3:PPCPrice[3],ppc4:PPCPrice[4],ppc5:PPCPrice[5],ppc6:PPCPrice[6],autoClicks:autoClicks}
       var toBeDown = JSON.stringify(newObj);
       var a = document.createElement('a');
       a.href = 'data:text/plain;meta-charset,' + encodeURIComponent(toBeDown);
