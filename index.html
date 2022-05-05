@@ -11,16 +11,16 @@
       Save as JSON File
     </button>
     <p id="output" style="color:#111;">
-      0 clicks
+      <span style="font-family:monospace;">0</span> clicks
     </p>
     <p id="cs">
-      0 clicks per second
+      <span style="font-family:monospace;">0</span> clicks per second
     </p>
     <p id="pc">
-      1 point per click
+      <span style="font-family:monospace;">1</span> point per click
     </p>
     <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
-      +1 CPS<br>$19
+      <span style="font-family:monospace;">+1</span> CPS<br>$19
     </button>
     <br>
     <button id="btn" onclick="clicks = clicks + ppc;cps = cps + ppc;" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
@@ -37,7 +37,7 @@
     <br><br>
 
 <button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
-      +1 PPC<br>$19
+      <span style="font-family:monospace;">+1</span> PPC<br>$19
     </button>
     <br>
     <span id="ppcCount">1</span>
@@ -91,9 +91,9 @@
       a.click();
       document.body.removeChild(a);
     }
-    setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = clicks + ' clicks'}},1);
-    setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = (cps + autoClicks) + ' ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
-    setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = (ppc) + ' ' + nounP + ' per click';},1);
+    setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = '<span style="font-family:monospace;">' + (clicks) + '</span> ' + ' clicks'}},1);
+    setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = '<span style="font-family:monospace;">' + (cps + autoClicks) + '</span> ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
+    setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = '<span style="font-family:monospace;">' + (ppc) + '</span> ' + nounP + ' per click';},1);
   </script>
 </body>
 <noscript><style>#mainDiv{display:none;}</style>Please use a browser that supports JavaScript.</noscript>
