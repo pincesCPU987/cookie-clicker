@@ -1,8 +1,9 @@
 <title>Javascript Test</title>
 <body style="padding:0px;margin:0px;">
   <div style="position:relative;width:100vw;height:100vh;" id="mainDiv">
-    <button onclick="loadGame();">
-      
+    <input type="file" accept=".json">
+    <button onclick="loadGame(event);">
+      Load JSON Save
     </button>
     <p id="output" style="color:#111;">
       0 clicks
@@ -13,11 +14,11 @@
     <p id="pc">
       1 point per click
     </p>
-    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];setVar('clicks',clicks);autoClicks = autoClicks + Number('1' + zero.repeat(amount));setVar('autoClicks',autoClicks);CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);setVar('cps'+amount,CPSPrice[amount]);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
+    <button id="CPS" onclick="if(clicks>CPSPrice[amount]){clicks = clicks - CPSPrice[amount];autoClicks = autoClicks + Number('1' + zero.repeat(amount));CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);event.target.innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];}">
       +1 CPS<br>$19
     </button>
     <br>
-    <button id="btn" onclick="clicks = clicks + ppc;setVar('clicks',clicks);cps = cps + ppc;setVar('cps',cps);" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
+    <button id="btn" onclick="clicks = clicks + ppc;cps = cps + ppc;" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
       Click me
     </button>
     <span id="cpsCount">1</span>
@@ -30,7 +31,7 @@
     </button>
     <br><br>
 
-<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];setVar('clicks',clicks);ppc = ppc + Number('1' + zero.repeat(amountP));setVar('ppc',ppc);PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);setVar('ppc'+amount,PPCPrice);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
+<button id="PPC" onclick="if(clicks>PPCPrice[amountP]){clicks = clicks - PPCPrice[amountP];ppc = ppc + Number('1' + zero.repeat(amountP));PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);event.target.innerHTML = '+1' + zero.repeat(amountP) + ' PPC<br>$' + PPCPrice[amountP];}">
       +1 PPC<br>$19
     </button>
     <br>
@@ -50,76 +51,29 @@
     function getVar(key){return Number(localStorage.getItem(key));}
   var zero = String('0');
   var ppc = 1;
-    if(!getVar('ppc')){
-      setVar('ppc','1');
-    }
   var amount = 0;
   var amountP = 0;
   var clicks = 0;
-    if(!getVar('clicks')){
-      setVar('clicks','0');
-    }
   var cps = 0;
   var CPSPrice = [19,99,999,9999,99999,999999,9999999];
-    if(!getVar('cps0')){
-      setVar('cps0','19');
-    }
-    if(!getVar('cps1')){
-      setVar('cps1','99');
-    }
-    if(!getVar('cps2')){
-      setVar('cps2','999');
-    }
-    if(!getVar('cps3')){
-      setVar('cps3','9999');
-    }
-    if(!getVar('cps4')){
-      setVar('cps4','99999');
-    }
-    if(!getVar('cps5')){
-      setVar('cps5','999999');
-    }
-    if(!getVar('cps6')){
-      setVar('cps6','9999999');
-    }
   var PPCPrice = [19,99,999,9999,99999,999999,9999999];
-    if(!getVar('ppc0')){
-      setVar('ppc0','19');
-    }
-    if(!getVar('ppc1')){
-      setVar('ppc1','99');
-    }
-    if(!getVar('ppc2')){
-      setVar('ppc2','999');
-    }
-    if(!getVar('ppc3')){
-      setVar('ppc3','9999');
-    }
-    if(!getVar('ppc4')){
-      setVar('ppc4','99999');
-    }
-    if(!getVar('ppc5')){
-      setVar('ppc5','999999');
-    }
-    if(!getVar('ppc6')){
-      setVar('ppc6','9999999');
-    }
   var autoClicks = 0;
-    if(!getVar('autoClicks')){
-      setVar('autoClicks','0')
-    }
   var noun;
   var nounP;
   var cs = elem('cs');
   var pc = elem('pc');
-    function loadGame(){
-      ppc = getVar('ppc');
-      clicks = getVar('clicks');
-      cps = getVar('cps');
-      CPSPrice = [getVar('cps0'),getVar('cps1'),getVar('cps2'),getVar('cps3'),getVar('cps4'),getVar('cps5'),getVar('cps6')];
+    function loadGame(e){
+      var fr = new FileReader();
+      fr.onload=function(){
+        var obj = JSON.parse(fr.result);
+        ppc = obj.ppc
+      clicks = obj.clicks
+      cps = obj.cps
+      CPSPrice = [obj.cps0,obj.cps1,getVar('cps2'),getVar('cps3'),getVar('cps4'),getVar('cps5'),getVar('cps6')];
       PPCPrice = [getVar('ppc0'),getVar('ppc1'),getVar('ppc2'),getVar('ppc3'),getVar('ppc4'),getVar('ppc5'),getVar('ppc6')];
       autoClicks = getVar('autoClicks');
       elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];
+      }
     }
     function setVar(){
       return localStorage.setItem
