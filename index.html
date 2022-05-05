@@ -5,6 +5,11 @@
     <button onclick="loadGame(event);">
       Load JSON Save
     </button>
+    <br>
+    <input type="text" id="name" title="Filename" placeholder="Filename">
+    <button onclick="saveGame(event)">
+      Save as JSON File
+    </button>
     <p id="output" style="color:#111;">
       0 clicks
     </p>
@@ -45,43 +50,51 @@
     </button>
   </div>
   <script>
-  function elem(input){
-    return document.querySelector('#'+input);
-  }
-    function getVar(key){return Number(localStorage.getItem(key));}
-  var zero = String('0');
-  var ppc = 1;
-  var amount = 0;
-  var amountP = 0;
-  var clicks = 0;
-  var cps = 0;
-  var CPSPrice = [19,99,999,9999,99999,999999,9999999];
-  var PPCPrice = [19,99,999,9999,99999,999999,9999999];
-  var autoClicks = 0;
-  var noun;
-  var nounP;
-  var cs = elem('cs');
-  var pc = elem('pc');
+    function elem(input){
+      return document.querySelector('#'+input);
+    }
+    var zero = String('0');
+    var ppc = 1;
+    var amount = 0;
+    var amountP = 0;
+    var clicks = 0;
+    var cps = 0;
+    var CPSPrice = [19,99,999,9999,99999,999999,9999999];
+    var PPCPrice = [19,99,999,9999,99999,999999,9999999];
+    var autoClicks = 0;
+    var noun;
+    var nounP;
+    var cs = elem('cs');
+    var pc = elem('pc');
     function loadGame(e){
       var fr = new FileReader();
       fr.onload=function(){
         var obj = JSON.parse(fr.result);
         ppc = obj.ppc
-      clicks = obj.clicks
-      cps = obj.cps
-      CPSPrice = [obj.cps0,obj.cps1,getVar('cps2'),getVar('cps3'),getVar('cps4'),getVar('cps5'),getVar('cps6')];
-      PPCPrice = [getVar('ppc0'),getVar('ppc1'),getVar('ppc2'),getVar('ppc3'),getVar('ppc4'),getVar('ppc5'),getVar('ppc6')];
-      autoClicks = getVar('autoClicks');
-      elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];
+        clicks = obj.clicks
+        cps = obj.cps
+        CPSPrice = [obj.cps0,obj.cps1,obj.cps2,obj.cps3,obj.cps4,obj.cps5,obj.cps6];
+        PPCPrice = [obj.ppc0,obj.ppc1,obj.ppc2,obj.ppc3,obj.ppc4,obj.ppc5,obj.ppc6];
+        autoClicks = obj.autoClicks;
+        elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];
+        elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' CPS<br>$' + CPSPrice[amount];
       }
+      fr.readAsText(e.target.files[0]);
     }
-    function setVar(){
-      return localStorage.setItem
+    function saveGame(){
+      var newObj = {ppc:ppc,clicks:clicks,cps:cps,cps0:CPSPrice[0],cps1:CPSPrice[1],cps2:CPSPrice[2],cps3:CPSPrice[3],cps4:CPSPrice[4],cps5:CPSPrice[5],cps6:CPSPrice[6],ppc0:PPCPrice[0],ppc1:PPCPrice[1],ppc2:PPCPrice[2],ppc3:PPCPrice[3],ppc4:PPCPrice[4],ppc5:PPCPrice[5],cps6:CPSPrice[6],autoClicks:autoClicks}
+      var toBeDown = JSON.stringify(obj);
+      var a = document.createElement('a');
+      a.href = 'data:text/plain;meta-charset,' + encodeURIComponent(toBeDown);
+      a.download = elem('name').value + '.json';
+      document.body.appendChild(a);
+      a.click;
+      document.body.removeChild(a);
     }
-  setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = clicks + ' clicks'}},1);
-  setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = (cps + autoClicks) + ' ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
-  setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = (ppc) + ' ' + nounP + ' per click';},1);
-</script>
-  </body>
+    setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = clicks + ' clicks'}},1);
+    setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = (cps + autoClicks) + ' ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
+    setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = (ppc) + ' ' + nounP + ' per click';},1);
+  </script>
+</body>
 <noscript><style>#mainDiv{display:none;}</style>Please use a browser that supports JavaScript.</noscript>
 <style>button{color:#111;cursor:pointer;}</style>
