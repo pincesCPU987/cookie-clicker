@@ -36,16 +36,16 @@
     </button>
     <br><br>
 
-<button id="PPC" onclick="buyPPC()">
+<button id="PPC" onclick="buyPPC(event)">
       <span style="font-family:monospace;">+1</span> PPC<br>$19
     </button>
     <br>
     <span id="ppcCount">1</span>
     <br>
-    <button id="ppcDown" onclick="">
+    <button id="ppcDown" onclick="ppcLess()">
       -
     </button>
-    <button id="ppcUp" onclick="if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style=\'font-family:monospace;\'>' + PPCPrice[amountP] + '</span>';elem('ppcCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amountP) + '</span>';">
+    <button id="ppcUp" onclick="ppcMore()">
       +
     </button>
   </div>
@@ -76,8 +76,8 @@
         CPSPrice = [obj.cps0,obj.cps1,obj.cps2,obj.cps3,obj.cps4,obj.cps5,obj.cps6];
         PPCPrice = [obj.ppc0,obj.ppc1,obj.ppc2,obj.ppc3,obj.ppc4,obj.ppc5,obj.ppc6];
         autoClicks = obj.autoClicks;
-        elem('CPS').innerHTML = '+1' + zero.repeat(amount) + ' CPS<br>$' + CPSPrice[amount];
-        elem('PPC').innerHTML = '+1' + zero.repeat(amountP) + ' CPS<br>$' + CPSPrice[amount];
+        elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
+        elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
       }
       fr.readAsText(elem('file').files[0]);
     }
@@ -113,19 +113,24 @@
       elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
       elem('cpsCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amount) + '</span>';
     }
-    function buyPPC(){
+    function buyPPC(e){
       if(clicks > PPCPrice[amountP]){
         clicks = clicks - PPCPrice[amountP];
         ppc = ppc + Number('1' + zero.repeat(amountP));
         PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);
-        event.target.innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+        e.target.innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
       }
     }
     function ppcLess(){
       if(amountP > 0){
         amountP = amountP - 1
       }
-      elem('PPC').innerHTML = '<span style=\'font-family:monospace;\'>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style=\'font-family:monospace;\'>' + PPCPrice[amountP] + '</span>';elem('ppcCount').innerHTML = '<span style=\'font-family:monospace;\'>1' + zero.repeat(amountP) + '</span>';
+      elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+      elem('ppcCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amountP) + '</span>';
+    }
+    function ppcMore(){
+      if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+      elem('ppcCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amountP) + '</span>';
     }
     setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = '<span style="font-family:monospace;">' + (clicks) + '</span> ' + ' clicks'}},1);
     setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = '<span style="font-family:monospace;">' + (cps + autoClicks) + '</span> ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
