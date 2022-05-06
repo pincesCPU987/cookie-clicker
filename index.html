@@ -12,16 +12,16 @@
       Save as JSON File
     </button>
     <p id="output" style="color:#111;">
-      <span style="font-family:monospace;">0</span> clicks
+      <span>0</span> clicks
     </p>
     <p id="cs">
-      <span style="font-family:monospace;">0</span> clicks per second
+      <span>0</span> clicks per second
     </p>
     <p id="pc">
-      <span style="font-family:monospace;">1</span> point per click
+      <span>1</span> point per click
     </p>
     <button id="CPS" onclick="buyCPS(event)">
-      <span style="font-family:monospace;">+1</span> CPS<br>$19
+      <span>+1</span> CPS<br>$<span>19</span>
     </button>
     <br>
     <button id="btn" onclick="clicks = clicks + ppc;cps = cps + ppc;" style="width:200px;height:200px;font-weight:bold;border-color:#0000;background:url(https://pincescpu987.github.io/cookie-clicker/cookie.gif);background-size:200px;border-radius:100px;position:absolute;position-anchor:50% 50%;top:50%;left:50%;">
@@ -38,7 +38,7 @@
     <br><br>
 
 <button id="PPC" onclick="buyPPC(event)">
-      <span style="font-family:monospace;">+1</span> PPC<br>$19
+      <span>+1</span> PPC<br>$19
     </button>
     <br>
     <span id="ppcCount">1</span>
@@ -77,8 +77,8 @@
         CPSPrice = [obj.cps0,obj.cps1,obj.cps2,obj.cps3,obj.cps4,obj.cps5,obj.cps6];
         PPCPrice = [obj.ppc0,obj.ppc1,obj.ppc2,obj.ppc3,obj.ppc4,obj.ppc5,obj.ppc6];
         autoClicks = obj.autoClicks;
-        elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
-        elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+        elem('CPS').innerHTML = '<span>+1' + zero.repeat(amount) + '</span> CPS<br>$<span>' + CPSPrice[amount] + '</span>';
+        elem('PPC').innerHTML = '<span>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span>' + PPCPrice[amountP] + '</span>';
       }
       fr.readAsText(elem('file').files[0]);
     }
@@ -97,7 +97,7 @@
         clicks = clicks - CPSPrice[amount];
         autoClicks = autoClicks + Number('1' + zero.repeat(amount));
         CPSPrice[amount] = Math.floor(CPSPrice[amount]*1.2);
-        elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
+        elem('CPS').innerHTML = '<span>+1' + zero.repeat(amount) + '</span> CPS<br>$<span>' + CPSPrice[amount] + '</span>';
       }
     }
     function cpsLess(){
@@ -111,32 +111,32 @@
       if(amount < 6){
         amount = amount + 1
       }
-      elem('CPS').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amount) + '</span> CPS<br>$<span style="font-family:monospace;">' + CPSPrice[amount] + '</span>';
-      elem('cpsCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amount) + '</span>';
+      elem('CPS').innerHTML = '<span>+1' + zero.repeat(amount) + '</span> CPS<br>$<span>' + CPSPrice[amount] + '</span>';
+      elem('cpsCount').innerHTML = '<span>1' + zero.repeat(amount) + '</span>';
     }
     function buyPPC(e){
       if(clicks > PPCPrice[amountP]){
         clicks = clicks - PPCPrice[amountP];
         ppc = ppc + Number('1' + zero.repeat(amountP));
         PPCPrice[amountP] = Math.floor(PPCPrice[amountP]*1.2);
-        elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
+        elem('PPC').innerHTML = '<span>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span>' + PPCPrice[amountP] + '</span>';
       }
     }
     function ppcLess(){
       if(amountP > 0){
         amountP = amountP - 1
       }
-      elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
-      elem('ppcCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amountP) + '</span>';
+      elem('PPC').innerHTML = '<span>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span>' + PPCPrice[amountP] + '</span>';
+      elem('ppcCount').innerHTML = '<span>1' + zero.repeat(amountP) + '</span>';
     }
     function ppcMore(){
-      if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '<span style="font-family:monospace;">+1' + zero.repeat(amountP) + '</span> PPC<br>$<span style="font-family:monospace;">' + PPCPrice[amountP] + '</span>';
-      elem('ppcCount').innerHTML = '<span style="font-family:monospace;">1' + zero.repeat(amountP) + '</span>';
+      if(amountP < 6){amountP = amountP + 1}elem('PPC').innerHTML = '<span>+1' + zero.repeat(amountP) + '</span> PPC<br>$<span>' + PPCPrice[amountP] + '</span>';
+      elem('ppcCount').innerHTML = '<span>1' + zero.repeat(amountP) + '</span>';
     }
-    setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = '<span style="font-family:monospace;">' + (clicks) + '</span> ' + ' clicks'}},1);
-    setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = '<span style="font-family:monospace;">' + (cps + autoClicks) + '</span> ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
-    setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = '<span style="font-family:monospace;">' + (ppc) + '</span> ' + nounP + ' per click';},1);
+    setInterval(function(){if(clicks==1){elem('output').innerHTML = clicks + ' click'}else{elem('output').innerHTML = '<span>' + (clicks) + '</span> ' + ' clicks'}},1);
+    setInterval(function(){if(cps == 1){noun = 'click'}else{noun = 'clicks'}cs.innerHTML = '<span>' + (cps + autoClicks) + '</span> ' + noun + ' per second';cps=0;clicks = clicks + autoClicks;},1000);
+    setInterval(function(){if(ppc == 1){nounP = 'point'}else{nounP = 'points'}pc.innerHTML = '<span>' + (ppc) + '</span> ' + nounP + ' per click';},1);
   </script>
 </body>
 <noscript><style>#mainDiv{display:none;}</style>Please use a browser that supports JavaScript.</noscript>
-<style>button{color:#111;cursor:pointer;}</style>
+<style>button{color:#111;cursor:pointer;}span{font-family:monospace;}</style>
